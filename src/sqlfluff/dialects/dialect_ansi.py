@@ -1275,6 +1275,7 @@ class OverClauseSegment(BaseSegment):
 
     type = "over_clause"
     match_grammar: Matchable = Sequence(
+        Indent,
         Sequence(OneOf("IGNORE", "RESPECT"), "NULLS", optional=True),
         "OVER",
         OneOf(
@@ -1283,6 +1284,7 @@ class OverClauseSegment(BaseSegment):
                 Ref("WindowSpecificationSegment", optional=True),
             ),
         ),
+        Dedent,
     )
 
 
